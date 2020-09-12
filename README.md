@@ -2,7 +2,7 @@
 
 A React JS application ready to host in Kubernetes with a CI & CD pipeline.
 
-[https://gitlab.com/techno-tim/techno-react/badges/master/pipeline.svg](https://gitlab.com/techno-tim/techno-react/-/commits/master)
+[![ci](https://gitlab.com/techno-tim/techno-react/badges/master/pipeline.svg)](https://gitlab.com/techno-tim/techno-react/-/commits/master)
 
 
 For instructions, please see [https://www.youtube.com/watch?v=Xc94HJn1nNo](https://www.youtube.com/watch?v=Xc94HJn1nNo)
