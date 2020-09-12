@@ -1,0 +1,44 @@
+stages:
+  - build
+  - docker
+  - deploy
+
+variables:
+  KUBECONFIG:  /root/.kube/config
+
+prod_build:
+  image: node:12.16.2
+  stage: build
+  script:
+      - NODE_ENV=production
+      - yarn install --frozen-lockfile --check-files
+      - yarn test
+      - yarn build
+  artifacts:
+      paths:
+      - build/
+
+docker_image_build_release:
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  stage: docker
+  only:
+    - tags
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY_IMAGE:latest
+
+deploy:
+  image: dtzar/helm-kubectl
+  stage: deploy
+  only:
+      - tags
+  before_script:
+      - sed -ie "s/deploy-date-value/$(date)/g" kubernetes/deployment.yaml
+      - mkdir -p /root/.kube/ && touch /root/.kube/config
+      - echo ${KUBERNETES_KUBE_CONFIG} | base64 -d > ${KUBECONFIG}
+  script:
+      - kubectl apply -f kubernetes/deployment.yaml

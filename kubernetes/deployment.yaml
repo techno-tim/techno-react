@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: technotim-react
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-default-technotim-react
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: technotim-react
+      annotations:
+        deploy-date: "deploy-date-value"
