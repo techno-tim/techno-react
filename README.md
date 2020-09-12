@@ -6,9 +6,8 @@ For instructions, please see [https://www.youtube.com/watch?v=Xc94HJn1nNo](https
 
 Don't forget to ⭐ this repo and fork it too! 👆
 
-## Repo
 
-[techno-react gitlab repo](https://gitlab.com/techno-tim/techno-react)
+It is also hosted in GitLab [techno-react gitlab repo](https://gitlab.com/techno-tim/techno-react)
 
 ## Available Scripts
 
