@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Repo
+
+[techno-react gitlab repo](https://gitlab.com/techno-tim/techno-react)
+
 ## Available Scripts
 
 In the project directory, you can run:
