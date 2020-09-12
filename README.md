@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## techno-react
+
+A React JS application ready to host in Kubernetes with a CI & CD pipeline.
+
+For instructions, please see [https://www.youtube.com/watch?v=Xc94HJn1nNo](https://www.youtube.com/watch?v=Xc94HJn1nNo)
+
+Don't forget to ⭐ this repo and fork it too! 👆
 
 ## Repo
 
@@ -41,32 +47,25 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `yarn release`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This will increment your `package.json`, update `CHANGELOG.md`, create a git tag based on the package version, and push the commit and tag for you.  It also run `postrelease` git hook.  It does this using [standard-version](https://github.com/conventional-changelog/standard-version)
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Credits
+Created by Techno Tim with 💛
 
-### Analyzing the Bundle Size
+🔔 Social Media 🔔
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+► Twitch https://www.twitch.tv/TechnoTim
 
-### Making a Progressive Web App
+► Twitter  https://twitter.com/TechnoTimLive
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+► Discord https://discord.gg/DJKexrJ
 
-### Advanced Configuration
+► Instagram https://www.instagram.com/techno.tim/
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+► Facebook https://www.facebook.com/TechnoTimLive/
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+► GitHub https://github.com/timothystewart6
