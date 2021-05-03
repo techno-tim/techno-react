@@ -10,14 +10,14 @@ prod_build:
   image: node:14.16.1
   stage: build
   script:
-      - NODE_ENV=production
-      - yarn install --frozen-lockfile --check-files
-      - yarn test
-      - yarn build
+    - NODE_ENV=production
+    - yarn install --frozen-lockfile --check-files
+    - yarn test
+    - yarn build
   artifacts:
-      paths:
-      - build/
-
+    paths:
+    - build/
+    expire_in: 1 week
 docker_image_build_release:
   image:
     name: gcr.io/kaniko-project/executor:debug
