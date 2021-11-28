@@ -4,7 +4,7 @@ stages:
   - deploy
 
 variables:
-  KUBECONFIG:  /root/.kube/config
+  KUBECONFIG: .kube/config
 
 prod_build:
   image: node:16.13.0
@@ -32,13 +32,17 @@ docker_image_build_release:
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY_IMAGE:latest
 
 deploy:
-  image: dtzar/helm-kubectl
+  image: 
+    name: bitnami/kubectl:latest
+    entrypoint: [""]
+  cache: []
   stage: deploy
   only:
-      - tags
+    - tags
+  retry: 2
   before_script:
-      - sed -ie "s/deploy-date-value/$(date)/g" kubernetes/deployment.yaml
-      - mkdir -p /root/.kube/ && touch /root/.kube/config
-      - echo ${KUBERNETES_KUBE_CONFIG} | base64 -d > ${KUBECONFIG}
+    - sed -ie "s/deploy-date-value/$(date)/g" kubernetes/deployment.yaml
+    - mkdir -p .kube/ && touch .kube/config
+    - echo ${KUBERNETES_KUBE_CONFIG} | base64 -d -i > ${KUBECONFIG}    
   script:
-      - kubectl apply -f kubernetes/deployment.yaml
+    - kubectl apply -f kubernetes/deployment.yaml
