@@ -7,7 +7,7 @@ variables:
   KUBECONFIG: .kube/config
 
 prod_build:
-  image: node:16.13.0
+  image: node:16.13.1
   stage: build
   script:
     - NODE_ENV=production
