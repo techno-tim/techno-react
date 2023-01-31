@@ -7,7 +7,7 @@ variables:
   KUBECONFIG: .kube/config
 
 prod_build:
-  image: node:v18.12.1
+  image: node:v18.13.0
   stage: build
   script:
     - NODE_ENV=production
@@ -32,7 +32,7 @@ docker_image_build_release:
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY_IMAGE:latest
 
 deploy:
-  image: 
+  image:
     name: bitnami/kubectl:latest
     entrypoint: [""]
   cache: []
@@ -43,6 +43,6 @@ deploy:
   before_script:
     - sed -ie "s/deploy-date-value/$(date)/g" kubernetes/deployment.yaml
     - mkdir -p .kube/ && touch .kube/config
-    - echo ${KUBERNETES_KUBE_CONFIG} | base64 -d -i > ${KUBECONFIG}    
+    - echo ${KUBERNETES_KUBE_CONFIG} | base64 -d -i > ${KUBECONFIG}
   script:
     - kubectl apply -f kubernetes/deployment.yaml
